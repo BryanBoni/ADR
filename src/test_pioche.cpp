@@ -13,7 +13,7 @@ int main() {
   //initialisation de la pioche pour contenir des entiers
   pioche_init(pioche, sizeof(int)) ;
   //remplissage de la pioche
-  for(int i = 0; i < taille; ++i) {
+ /* for(int i = 0; i < taille; ++i) {
     pioche_defausse(pioche, &i) ;
   }
 
@@ -46,6 +46,6 @@ int main() {
   printf("%f\n", (float) score / (float) ntests) ;
 
   //menage
-  pioche_suppr(pioche) ;
+  pioche_suppr(pioche) ;*/
   return 0 ;
 }

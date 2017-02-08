@@ -10,6 +10,7 @@ void joueur_simple_suppr(JoueurSimple& joueur) {
 
 int joueur_simple_mdp(JoueurSimple& joueur) {
   //... votre code ici
+	return 0;
 }
 
 void joueur_simple_config_indice(JoueurSimple& joueur, int indice) {

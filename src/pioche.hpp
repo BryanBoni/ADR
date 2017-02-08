@@ -1,10 +1,20 @@
 #ifndef ARAIL_PIOCHE_H
 #define ARAIL_PIOCHE_H
 
+#include <cstdlib>
+
 //structure de données
+struct DynamicTab{
+	void* ptr;
+	size_t size;//number of current element
+	size_t capacity;//max number of elements that can contain the table
+	size_t elementSize;//size taken in memory by one element.
+};
+
 struct Pioche {
-  //... votre code ici
-} ;
+	DynamicTab* deck;//pioche in french
+  	DynamicTab* graveyard;//défausse in french
+};
 
 //initialisation de la pioche.
 //  - taille_elt est le nombre d'octets necessaires pour stocker une carte

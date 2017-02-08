@@ -5,7 +5,7 @@ HEADERS = $(SOURCES:.cpp=.hpp)
 OBJECTS = $(SOURCES:.cpp=.o)
 
 CXXFLAGS  += -g -Wall -std=c++11 -pedantic
-LDFLAGS +=
+LDFLAGS += -g
 
 all : test_pioche test_jeu
 
