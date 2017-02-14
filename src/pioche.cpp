@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
+#include <math.h>//use .h because without it the compiler dont find it.
 
 #include "pioche.hpp"
 
@@ -20,17 +21,23 @@ void pioche_init(Pioche& pioche, int taille_elt) {
 	//cout << "pioche initialisé" << endl;
 
 	DynamicTab *graveyard = new DynamicTab;
-	deck->ptr = malloc(taille_elt*10);
-	deck->size = 0;
-	deck->elementSize = taille_elt;
-	deck->capacity = 10;
+	graveyard->ptr = malloc(taille_elt*10);
+	graveyard->size = 0;
+	graveyard->elementSize = taille_elt;
+	graveyard->capacity = 10;
 	pioche.graveyard = graveyard;
 
 	//cout << "Cimetière initialisé" << endl;
 }
 
 void pioche_defausse(Pioche& pioche, const void* elt) {
-	
+	if(pioche.graveyard->capacity == pioche.graveyard->size){
+		pioche.graveyard->capacity += 10;
+		pioche.graveyard->ptr = realloc(pioche.graveyard->ptr, 
+			(pioche.graveyard->elementSize*pioche.graveyard->capacity)+10);
+	}
+	//void* locationCopy = (char*);
+	//pioche.graveyard->ptr[1] = elt;
 }
 
 void pioche_pioche(Pioche& pioche, void* target) {
@@ -38,7 +45,19 @@ void pioche_pioche(Pioche& pioche, void* target) {
 }
 
 void pioche_melange(Pioche& pioche) {
-  //... votre code ici
+  //Psoeudo code
+	int i = 0;
+	void* temp;
+	//change pioche with graveyard ?
+
+	//Shuffle
+	int n = pioche.deck->size;
+	while(n >= 0){
+		i = floor(random() * n--);
+		temp = pioche.deck->ptr[n];
+		pioche.deck->ptr[n] = pioche.deck->ptr[n];
+		pioche.deck->ptr[n] = temp; 
+	}
 }
 
 void pioche_suppr(Pioche& pioche) {
