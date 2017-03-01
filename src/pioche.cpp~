@@ -67,8 +67,4 @@ void pioche_melange(Pioche& pioche) {
 
 void pioche_suppr(Pioche& pioche) {
   //... votre code ici
-	free(pioche.deck->ptr);
-	free(pioche.graveyard->ptr);
-	delete pioche.deck;
-	delete pioche.graveyard;
 }
