@@ -45,7 +45,7 @@ void pioche_pioche(Pioche& pioche, void* target) {
 }
 
 void pioche_melange(Pioche& pioche) {
-  //Psoeudo code
+  //Pseudo code
 	int i = 0;
 	void* temp;
 	//change pioche with graveyard ?
@@ -61,5 +61,5 @@ void pioche_melange(Pioche& pioche) {
 }
 
 void pioche_suppr(Pioche& pioche) {
-  //... votre code ici
+  //Pseudo code
 }
