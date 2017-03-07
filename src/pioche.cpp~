@@ -50,7 +50,7 @@ void pioche_pioche(Pioche& pioche, void* target) {
 }
 
 void pioche_melange(Pioche& pioche) {
-  //Pseudo code
+  //Psoeudo code
 	int i = 0;
 	void* temp;
 	//change pioche with graveyard ?
@@ -66,9 +66,5 @@ void pioche_melange(Pioche& pioche) {
 }
 
 void pioche_suppr(Pioche& pioche) {
-
-	free(pioche.deck->ptr);
-	free(pioche.graveyard->ptr);
-	delete pioche.deck;
-	delete pioche.graveyard;
+  //... votre code ici
 }
