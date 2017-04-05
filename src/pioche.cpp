@@ -50,6 +50,7 @@ void pioche_pioche(Pioche& pioche, void* target) {
 }
 
 void pioche_melange(Pioche& pioche) {
+
 	while(pioche.deck->size > 0)
 	{
 		pioche_defausse(pioche, pioche.deck->ptr + pioche.deck->elementSize * (pioche.deck->size - 1));
@@ -80,7 +81,7 @@ void pioche_melange(Pioche& pioche) {
 }
 
 void pioche_suppr(Pioche& pioche) {
-  //... votre code ici
+
 	free(pioche.deck->ptr);
 	free(pioche.graveyard->ptr);
 	delete pioche.deck;
