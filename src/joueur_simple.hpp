@@ -1,10 +1,17 @@
 #ifndef ARAIL_JOUEUR_SIMPLE_HPP
 #define ARAIL_JOUEUR_SIMPLE_HPP
 
+#include <vector>
+
 #include "jeu.hpp"
 
+using namespace std;
 struct JoueurSimple {
-  //... votre code ici
+	int id;
+	vector<Carte> cartes_couleur;
+	vector<Objectif> cartes_objectif;
+	int score;
+	int mdp;
 } ;
 
 //initialisation

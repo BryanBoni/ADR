@@ -41,7 +41,6 @@ void pioche_defausse(Pioche& pioche, const void* elt) {
 }
 
 void pioche_pioche(Pioche& pioche, void* target) {
-  //... votre code ici
     if(pioche.deck->size == 0)
         pioche_melange(pioche);
     memcpy(target, pioche.deck->ptr + (pioche.deck->size - 1) * pioche.deck->elementSize, pioche.deck->elementSize);
