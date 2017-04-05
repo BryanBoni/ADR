@@ -12,7 +12,7 @@ struct JoueurSimple {
 	vector<Objectif> cartes_objectif;
 	int score;
 	int mdp;
-} ;
+};
 
 //initialisation
 void joueur_simple_init(JoueurSimple& joueur) ;

@@ -152,7 +152,7 @@ Carte jeu_pioche_cache(Jeu& jeu, int joueur, int mdp) ;
  *   - la valeur de retour est non predictibles si les parametres du joueur 
  *     sont mauvais
  */
-Carte jeu_pioche_visible(Jeu&, int index, int joueur, int mdp) ;
+Carte jeu_pioche_visible(Jeu& jeu, int index, int joueur, int mdp) ;
 
 /* defausse d'une carte
  *   - carte est la carte defaussee
