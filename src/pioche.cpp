@@ -55,11 +55,11 @@ void pioche_melange(Pioche& pioche) {
 		pioche_defausse(pioche, pioche.deck->ptr + pioche.deck->elementSize * (pioche.deck->size - 1));
 		pioche.deck->size--;
 	}
-	void* tmp = malloc(pioche.deck->elementSize);
+	void* tmp = malloc(pioche.graveyard->elementSize);
 	srand(time(nullptr));
 	for (int i = pioche.graveyard->size -1; i >=1; i--)
 	{
-		int pos = rand() % (i+1);
+		int pos = rand() % (i);
 		memcpy(tmp, pioche.graveyard->ptr + (pioche.graveyard->elementSize * i),pioche.graveyard->elementSize);
 		memcpy(pioche.graveyard->ptr + (pioche.graveyard->elementSize * i), pioche.graveyard->ptr + (pioche.graveyard->elementSize * pos), pioche.graveyard->elementSize);
 		memcpy(pioche.graveyard->ptr + (pioche.graveyard->elementSize * pos), tmp, pioche.graveyard->elementSize);
@@ -80,9 +80,9 @@ void pioche_melange(Pioche& pioche) {
 }
 
 void pioche_suppr(Pioche& pioche) {
-
+    
 	free(pioche.deck->ptr);
 	free(pioche.graveyard->ptr);
-	delete pioche.deck;
-	delete pioche.graveyard;
+	free(pioche.deck);
+	free(pioche.graveyard);
 }

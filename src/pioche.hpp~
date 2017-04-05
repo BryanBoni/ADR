@@ -1,11 +1,11 @@
 #ifndef ARAIL_PIOCHE_H
 #define ARAIL_PIOCHE_H
 
-#include <cstdlib>
+
 
 //structure de données
 struct DynamicTab{
-	void* ptr;
+	char* ptr;
 	size_t size;//number of current element
 	size_t capacity;//max number of elements that can contain the table
 	size_t elementSize;//size taken in memory by one element.
