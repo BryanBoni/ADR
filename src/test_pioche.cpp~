@@ -4,7 +4,7 @@
 
 int main() {
   //nombre de melanges testes
-  int ntests = 1000000 ;
+  int ntests = 100000000 ;
   //taille de la pioche
   int taille = 25 ;
 

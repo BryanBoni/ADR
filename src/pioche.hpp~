@@ -5,7 +5,7 @@
 
 //structure de données
 struct DynamicTab{
-	char* ptr;
+	void* ptr;
 	size_t size;//number of current element
 	size_t capacity;//max number of elements that can contain the table
 	size_t elementSize;//size taken in memory by one element.
