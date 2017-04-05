@@ -50,13 +50,13 @@ void pioche_pioche(Pioche& pioche, void* target) {
 }
 
 void pioche_melange(Pioche& pioche) {
-<<<<<<< HEAD
+
 	while(pioche.deck->size > 0)
 	{
 		pioche_defausse(pioche, pioche.deck->ptr + pioche.deck->elementSize * (pioche.deck->size - 1));
 		pioche.deck->size--;
 	}
-	void* tmp = malloc(pioche.deck->elementSize);
+	void* tmp = malloc(pioche.graveyard->elementSize);
 	srand(time(nullptr));
 	for (int i = pioche.graveyard->size -1; i >=1; i--)
 	{
@@ -75,29 +75,15 @@ void pioche_melange(Pioche& pioche) {
 	{
 		memcpy(pioche.deck->ptr + (pioche.deck->elementSize * i), pioche.graveyard->ptr + (pioche.graveyard->elementSize * i), pioche.graveyard->elementSize);
 		pioche.deck->size++;
-=======
-  //Pseudo code
-	int i = 0;
-	void* temp;
-	//change pioche with graveyard ?
-
-	//Shuffle
-	int n = pioche.deck->size;
-	while(n >= 0){
-		i = floor(random() * n--);
-		temp = pioche.deck->ptr[n];
-		pioche.deck->ptr[n] = pioche.deck->ptr[n];
-		pioche.deck->ptr[n] = temp; 
->>>>>>> 15ab0eb89a776f351bd490c9f32290e1de08275d
 	}
     pioche.graveyard->size = 0;
 	free(tmp);
 }
 
 void pioche_suppr(Pioche& pioche) {
-
+    
 	free(pioche.deck->ptr);
 	free(pioche.graveyard->ptr);
-	delete pioche.deck;
-	delete pioche.graveyard;
+	free(pioche.deck);
+	free(pioche.graveyard);
 }

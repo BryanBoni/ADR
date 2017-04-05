@@ -1,0 +1,28 @@
+#ifndef HUFF_HEAP_HPP
+#define HUFF_HEAP_HPP
+
+
+/* Type pour la file a priorite */
+struct valuation{
+    int index;
+    int value;
+};
+typedef std::vector<int> Heap ;
+
+/* Taille de la file a priorite */
+
+int heap_size(Heap& h) ;
+
+/* Sommet de la file a priorite => arbre de poids minimal dans la file */
+
+int heap_min(Heap& h) ;
+
+/* Retrait de l'arbre de poids minimal de la file */
+
+void heap_pop(Heap& h) ;
+
+/* Ajout d'un nouvel arbre a la file */
+
+void heap_push(Heap& h, valuation* a) ;
+
+#endif
