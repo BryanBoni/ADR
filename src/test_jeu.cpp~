@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
   for(int i = 0; i < jeu_nb_villes(jeu); i++)
 	villes.push_back(-1);
   villes[0] = 0;
-  dijkstra(jeu.liaisons, villes, 1);
+ // dijkstra(jeu.liaisons, villes, 1);
  for(unsigned int i = 0; i < villes.size(); i++)
 	  std::cout << i << "   " <<villes[i] << "\n";
 

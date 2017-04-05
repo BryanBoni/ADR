@@ -7,7 +7,7 @@ struct valuation{
     int index;
     int value;
 };
-typedef std::vector<int> Heap ;
+typedef std::vector<valuation> Heap ;
 
 /* Taille de la file a priorite */
 
@@ -23,6 +23,6 @@ void heap_pop(Heap& h) ;
 
 /* Ajout d'une valuation a la file */
 
-void heap_push(Heap& h, valuation* a) ;
+void heap_push(Heap& h, int index, int value) ;
 
 #endif

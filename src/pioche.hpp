@@ -1,7 +1,7 @@
 #ifndef ARAIL_PIOCHE_H
 #define ARAIL_PIOCHE_H
 
-
+#include <cstdlib>
 
 //structure de données
 struct DynamicTab{
