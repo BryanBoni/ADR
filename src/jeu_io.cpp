@@ -28,6 +28,7 @@ static ConfigSection check_section(std::string& str) {
 void jeu_import(Jeu& jeu, std::istream& input) {
   //read buffer
   std::string buf ;
+  
   //parse input stream
   ConfigSection section = NO_SECTION ;
   int card_colors = 0 ;

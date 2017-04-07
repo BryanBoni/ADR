@@ -3,11 +3,12 @@
 #include <iostream>
 #include <ctime>
 #include <math.h>
+#include <vector>
 
 #include "joueur_simple.hpp"
+#include "parcours.cpp"
 
 using namespace std;
-
 
 //initialisation
 void joueur_simple_init(JoueurSimple& joueur) {
@@ -51,22 +52,23 @@ void joueur_simple_tour(Jeu& jeu, JoueurSimple& joueur) {
 	//todo 
 	bool can_play = true;
 
+	vector<Liaison> chemin;
+	vector<int> carte_a_prendre;
+
+	chemin_a_prendre(chemin, jeu, joueur.id);
+
 	if(joueur.cartes_objectif.size() < 1){
 		joueur.cartes_objectif.push_back(jeu_pioche_objectif(jeu, joueur.id, joueur.mdp));
-	}else if(can_play){
+		cout << "le joueur " << joueur.id << " tire une carte."<<endl;
+	}else if(can_play == true){
 
 	}else{
-		if(carte_necessaire_visible(jeu)){
-			joueur.cartes_couleur.push_back(jeu_pioche_visible(jeu, index, joueur.id, joueur.mdp));
+		if(cartes_necessaire_visible(jeu, chemin, carte_a_prendre) == true){
+			joueur.cartes_couleur.push_back(jeu_pioche_visible(jeu, carte_a_prendre[0], joueur.id, joueur.mdp));
+			joueur.cartes_couleur.push_back(jeu_pioche_visible(jeu, carte_a_prendre[1], joueur.id, joueur.mdp));
+
 		}
 		joueur.cartes_couleur.push_back(jeu_pioche_cache(jeu, joueur.id, joueur.mdp));
 	}
 }
 
-/*
-retourne vrai si les cartes visibles sont necessaire à la complétion du graphe
-faux si non.
-*/
-bool carte_necessaire_visible(Jeu& jeu){
-	return true;
-}
