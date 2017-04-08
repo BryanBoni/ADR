@@ -33,10 +33,11 @@ int main(int argc, char** argv) {
 	JoueurSimple joueur;
 	joueur_simple_init(joueur) ;
 
-	/*
+	
 	//ajout du joueur à la partie
 	int index = jeu_ajout_joueur(jeu, joueur_simple_mdp(joueur)) ;
 	joueur_simple_config_indice(joueur, index) ;
+
 
 	//jeu
 	for(int i = 0; i < 30; ++i) {
@@ -48,8 +49,8 @@ int main(int argc, char** argv) {
 
 	//menage
 	joueur_simple_suppr(joueur) ;
-	*/
+
 	jeu_suppr(jeu) ;
 
-  return 0 ;
+	return 0 ;
 }

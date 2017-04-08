@@ -24,13 +24,14 @@ void dijkstra(vector<Liaison>  liaisons, vector<int>& villes, int joueur)
         heap_push(hp, i, dist[i]);
     }
 
+    cout << "Plus court chemin :";
     while(heap_size(hp) > 0)
     {
         valuation vmin = heap_min(hp);
         heap_pop(hp);
         if(vmin.value <= dist[vmin.index] && !mark[vmin.index])
         {
-        	cout << "Plus court chemin :" << vmin.index << endl;
+        	cout <<  vmin.index << ", ";
             mark[vmin.index] = true;
             for(Liaison l : liaisons)
             {
@@ -45,6 +46,7 @@ void dijkstra(vector<Liaison>  liaisons, vector<int>& villes, int joueur)
             }
         }
     }
+    cout << endl;
 }
 
 void chemin_a_prendre(vector<Liaison> chemin, Jeu& jeu, int joueur){

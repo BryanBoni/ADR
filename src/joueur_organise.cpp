@@ -5,24 +5,24 @@
 #include <math.h>
 #include <vector>
 
-#include "joueur_simple.hpp"
+#include "joueur_organise.hpp"
 #include "parcours.cpp"
 
 using namespace std;
 
 //initialisation
-void joueur_simple_init(JoueurSimple& joueur) {
+void joueur_organise_init(JoueurOrganise& joueur) {
 	joueur.cartes_couleur = vector<Carte>();
 	joueur.cartes_objectif = vector<Objectif>();
 	joueur.score = 0;
-	joueur.mdp = joueur_simple_mdp(joueur);
+	joueur.mdp = joueur_organise_mdp(joueur);
 }
 
 /*
 pas utilie pour le joueur simple pour l'instant 
 car la libération de la mémoire se fait automatiquement.
 */
-void joueur_simple_suppr(JoueurSimple& joueur) {
+void joueur_organise_suppr(JoueurOrganise& joueur) {
 	//RIEN NON RIEN DE RIEN JE NE REGRETTE RIEN, NI LA.....
 	//rien à faire ici.
 }
@@ -30,7 +30,7 @@ void joueur_simple_suppr(JoueurSimple& joueur) {
 /*
 Créé un mot de passe pour le joueur.
 */
-int joueur_simple_mdp(JoueurSimple& joueur) {
+int joueur_organise_mdp(JoueurOrganise& joueur) {
 	srand(time(nullptr));
 	return rand() % (4000);
 }
@@ -38,7 +38,7 @@ int joueur_simple_mdp(JoueurSimple& joueur) {
 /*
 Assigne un id au joueur
 */
-void joueur_simple_config_indice(JoueurSimple& joueur, int indice) {
+void joueur_organise_config_indice(JoueurOrganise& joueur, int indice) {
 	joueur.id = indice;
 }
 
@@ -47,8 +47,11 @@ Le joueur fait soit :
 	- la pioche de l'objectif et calcul du plus court chemin
 	- la pioche de 2 cartes wagon (face recto si celle voulu, sinon pioche face verso)
 	- Achete une liason avec une carte wagon
+	-
 */
-void joueur_simple_tour(Jeu& jeu, JoueurSimple& joueur) {
+void joueur_organise_tour(Jeu& jeu, JoueurOrganise& joueur) {
+
+	//TODO : Modifier le code pour qu'il soit addapté pour un joueur organisée.
 	if(joueur.cartes_objectif.size() < 1){
 		joueur.cartes_objectif.push_back(jeu_pioche_objectif(jeu, joueur.id, joueur.mdp));
 		cout << "le joueur " << joueur.id << " tire une carte objectif : \n - ville 1 : " << joueur.cartes_objectif[0].ville1 << "\n - ville 2 : " << joueur.cartes_objectif[0].ville2 << "\n - gains possibles : "<< joueur.cartes_objectif[0].points << "\n" <<endl;
