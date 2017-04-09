@@ -71,11 +71,10 @@ void joueur_simple_tour(Jeu& jeu, JoueurSimple& joueur) {
 			}
 			else
 			{
-				for(Liaison l : chemin)
-					cout << l.ville1 << " a " << l.ville2 << "\n";
-				cout << "cartes en main : \n";
 				for( Carte c : joueur.cartes_couleur)
 					cout << c.couleur << "\n";
+				for(Liaison l : chemin)
+					cout << l.ville1 << " a " << l.ville2 << "\n";
 
 				if(joueur.cartes_couleur.size() > 0){
 					for(Liaison l : chemin){

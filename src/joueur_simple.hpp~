@@ -10,7 +10,6 @@ struct JoueurSimple {
 	int id;
 	vector<Carte> cartes_couleur;
 	vector<Objectif> cartes_objectif;
-	vector<Objectif> objectifs_complete;
 	int score;
 	int mdp;
 };
