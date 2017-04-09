@@ -61,16 +61,14 @@ void joueur_simple_tour(Jeu& jeu, JoueurSimple& joueur) {
 		Liaison toBuy;
 		vector<int> carte_a_prendre;
 
-		if(chemin_a_prendre(chemin, jeu, joueur.id, joueur.cartes_objectif.back().ville1, joueur.cartes_objectif.back().ville2))
-		{
+		if(chemin_a_prendre(chemin, jeu, joueur.id, joueur.cartes_objectif.back().ville1, joueur.cartes_objectif.back().ville2)){
 			cout << "chemin taille : " <<chemin.size() << "\n";
-			if(chemin.size() == 0) // Il n'y a aucune carte à acheter, mais le chemin est possible --> l'objectif est réalisé
-			{
+			if(chemin.size() == 0){ // Il n'y a aucune carte à acheter, mais le chemin est possible --> l'objectif est réalisé
+			
 				joueur.objectifs_complete.push_back(joueur.cartes_objectif.back());
 				joueur.cartes_objectif.pop_back();				
 			}
-			else
-			{
+			else{
 				for(Liaison l : chemin)
 					cout << l.ville1 << " a " << l.ville2 << "\n";
 				cout << "cartes en main : \n";
@@ -79,8 +77,7 @@ void joueur_simple_tour(Jeu& jeu, JoueurSimple& joueur) {
 
 				if(joueur.cartes_couleur.size() > 0){
 					for(Liaison l : chemin){
-						for(vector<Carte>::iterator it = joueur.cartes_couleur.begin(); it != joueur.cartes_couleur.end(); ++it)
-						{		
+						for(vector<Carte>::iterator it = joueur.cartes_couleur.begin(); it != joueur.cartes_couleur.end(); ++it){		
 							if(l.couleur == it->couleur){
 								canPlay = true;
 								toBuy = l;
@@ -98,8 +95,7 @@ void joueur_simple_tour(Jeu& jeu, JoueurSimple& joueur) {
 				}else{
 					cartes_necessaire_visible(jeu, chemin, carte_a_prendre);
 					int carte_pioche = 0;
-					for(int i : carte_a_prendre)
-					{
+					for(int i : carte_a_prendre){
 						joueur.cartes_couleur.push_back(jeu_pioche_visible(jeu, i, joueur.id, joueur.mdp));
 						carte_pioche++;
 					}
@@ -110,8 +106,7 @@ void joueur_simple_tour(Jeu& jeu, JoueurSimple& joueur) {
 				}
 			}
 		}
-		else
-		{
+		else{
 			cout << "objectif impossible à remplir\n";
 			joueur.cartes_objectif.push_back(jeu_pioche_objectif(jeu, joueur.id, joueur.mdp));
 			cout << "le joueur " << joueur.id << " tire une carte objectif : \n - ville 1 : " << joueur.cartes_objectif.back().ville1 << "\n - ville 2 : " << joueur.cartes_objectif.back().ville2 << "\n - gains possibles : "<< joueur.cartes_objectif.back().points << "\n" <<endl;
