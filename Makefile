@@ -7,7 +7,7 @@ OBJECTS = $(SOURCES:.cpp=.o)
 CXXFLAGS  += -g -Wall -std=c++11 -pedantic
 LDFLAGS += -g
 
-all : test_pioche test_jeu
+all : test_pioche test_jeu arail_game
 
 $(OBJECTS) : %.o : %.cpp
 	$(CXX) -c $(CXXFLAGS) $? -o $@
@@ -34,7 +34,18 @@ test_jeu : $(JEU_OBJECTS) $(OBJECTS) $(HEADERS)
 $(JEU_OBJECTS): %.o : %.cpp
 	$(CXX) -c $(CXXFLAGS) $? -o $@
 
+########## arail_game ##########
+
+ARAIL_SOURCES = src/arail_game.cpp
+ARAIL_OBJECTS = $(ARAIL_SOURCES:.cpp=.o)
+
+arail_game : $(ARAIL_OBJECTS) $(OBJECTS) $(HEADERS)
+	$(CXX) $(ARAIL_OBJECTS) $(OBJECTS) -o $@ $(LDFLAGS)
+	
+$(ARAIL_OBJECTS): %.o : %.cpp
+	$(CXX) -c $(CXXFLAGS) $? -o $@
+
 ########## cleanup ##########
 
 clean:
-	@rm -f test_pioche test_jeu $(OBJECTS) $(PIOCHE_OBJECTS) $(JEU_OBJECTS)
+	@rm -f test_pioche test_jeu arail_game $(OBJECTS) $(PIOCHE_OBJECTS) $(JEU_OBJECTS) $(ARAIL_OBJECTS)
