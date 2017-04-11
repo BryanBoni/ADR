@@ -1,5 +1,5 @@
-#ifndef ARAIL_JOUEUR_ORGANISER_HPP
-#define ARAIL_JOUEUR_ORGANISER_HPP
+#ifndef ARAIL_JOUEUR_ORGANISE_HPP
+#define ARAIL_JOUEUR_ORGANISE_HPP
 
 #include <vector>
 
@@ -10,6 +10,7 @@ struct JoueurOrganise {
 	int id;
 	vector<Carte> cartes_couleur;
 	vector<Objectif> cartes_objectif;
+	vector<Objectif> objectifs_complete;
 	int score;
 	int mdp;
 };

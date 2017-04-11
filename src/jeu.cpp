@@ -212,9 +212,7 @@ Liaison jeu_ville_liaison(const Jeu& jeu, int ville, int index) {
 
 }
 
-void jeu_prendre_liaison(Jeu& jeu, int ville1, int ville2, int joueur, int mdp) {
-  //verification du joueur
-  if(!joueur_check(jeu, joueur, mdp)) return ;
+static void prendre_liaison_oriente(Jeu& jeu, int ville1, int ville2, int joueur) {
   //liaison requete
   Liaison query ;
   query.ville2 = ville2 ;
@@ -230,13 +228,16 @@ void jeu_prendre_liaison(Jeu& jeu, int ville1, int ville2, int joueur, int mdp) 
   if(match != ville_end(jeu, ville1) && match->ville2 == ville2) {
     if(match->proprietaire == 0) {
       match->proprietaire = joueur ;
-      if(ville1 < ville2){
-        log(jeu, PRENDRE_LIAISON, joueur, ville1, ville2) ;
-      } else {
-        jeu_prendre_liaison(jeu, ville2, ville1, joueur, mdp) ;
-      }
     }
   }
+}
+
+void jeu_prendre_liaison(Jeu& jeu, int ville1, int ville2, int joueur, int mdp) {
+  //verification du joueur
+  if(!joueur_check(jeu, joueur, mdp)) return ;
+  prendre_liaison_oriente(jeu, ville1, ville2, joueur) ;
+  prendre_liaison_oriente(jeu, ville2, ville1, joueur) ;
+  log(jeu, PRENDRE_LIAISON, joueur, ville1, ville2) ;
 }
 
 ////cartes
