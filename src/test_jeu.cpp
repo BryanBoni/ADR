@@ -40,13 +40,18 @@ int main(int argc, char** argv) {
 
 
 	//jeu
-	for(int i = 0; i < 30; ++i) {
+	for(int i = 0; i < 10; ++i) {
 		joueur_simple_tour(jeu, joueur) ;
 	}
 
 	//historique
 	jeu_affiche_historique(jeu) ;
 
+	int score = 0;
+	for(Objectif o : joueur.objectifs_complete)
+		score += o.points;
+	score -= joueur.cartes_objectif.size() * 10;
+	cout << "score joueur 1 :" << score << "\n";
 	//menage
 	joueur_simple_suppr(joueur) ;
 

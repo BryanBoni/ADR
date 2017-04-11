@@ -5,7 +5,7 @@
 using namespace std;
 
 
-void dijkstra(vector<Liaison>  liaisons, vector<int>& villes, int joueur)
+void dijkstra(vector<Liaison>&  liaisons, vector<int>& villes, int joueur)
 {
     Heap hp;
     vector<int> dist = villes;
@@ -24,18 +24,18 @@ void dijkstra(vector<Liaison>  liaisons, vector<int>& villes, int joueur)
         heap_push(hp, i, dist[i]);
     }
 
-    cout << "Plus court chemin :";
+
     while(heap_size(hp) > 0)
     {
         valuation vmin = heap_min(hp);
         heap_pop(hp);
         if(vmin.value <= dist[vmin.index] && !mark[vmin.index])
         {
-        	cout <<  vmin.index << ", ";
+
             mark[vmin.index] = true;
             for(Liaison l : liaisons)
             {
-                if((l.longueur != 0) || (l.proprietaire == joueur || l.proprietaire == 0))
+                if((l.longueur != 0) && (l.proprietaire == 0 || l.proprietaire == joueur))
                     if(l.ville1 == vmin.index)
                         if(dist[l.ville2] > dist[vmin.index] + l.longueur || dist[l.ville2] < 0)
                         {
@@ -49,44 +49,56 @@ void dijkstra(vector<Liaison>  liaisons, vector<int>& villes, int joueur)
     cout << endl;
 }
 
-void chemin_a_prendre(vector<Liaison> chemin, Jeu& jeu, int joueur){
+bool chemin_a_prendre(vector<Liaison>& chemin, Jeu& jeu, int joueur, int ville_depart, int ville_arrivee){
 	vector<int> villes;
 	
 	for(int i = 0; i < jeu_nb_villes(jeu); i++)
 		villes.push_back(-1);
 	
-	villes[0] = 0;
+	villes[ville_depart] = 0;
 	
-	//dijkstra(jeu.liaisons, villes, 1);
-
-	//for(unsigned int i = 0; i < villes.size(); i++)
-	//	std::cout << i << "   " <<villes[i] << "\n";
 
 	dijkstra(jeu.liaisons, villes, joueur);
+	
+	if(villes[ville_arrivee] == -1) 
+		return false;	//Aucune chemin n'a été trouvé pour aller à la ville_arrivee
 
-	for(unsigned int i = 0; i < villes.size()-1; i++){
-		for(Liaison l : jeu.liaisons){
-			if(l.ville1 == villes[i] && l.ville2 == villes[i+1]){
-				chemin.push_back(l);
-				//cout << "liaisons " << i << " : " << l.ville1 << " " << l.ville2 <<endl;
+	int current_ville = ville_arrivee;
+	Liaison shortest_liaison;
+	
+	
+	while(current_ville != ville_depart)
+	{
+		for(Liaison l : jeu.liaisons)
+			if(l.ville1 == villes[current_ville] && l.ville2 == current_ville && (l.proprietaire == 0 || l.proprietaire == joueur))
+			{
+				shortest_liaison = l;
 			}
-		}
-		//cout << villes[i] << endl; //position de i dans la table
+		if(shortest_liaison.proprietaire == 0)
+			chemin.insert(chemin.begin(), shortest_liaison);
+		current_ville = shortest_liaison.ville1;
 	}
+	return true;
 }
 
 
-bool cartes_necessaire_visible(Jeu& jeu, vector<Liaison> chemin, vector<int> carte_a_prendre){
+bool cartes_necessaire_visible(Jeu& jeu, vector<Liaison> chemin, vector<int>& carte_a_prendre){
 	
-	int count = 0, i = 0;
+	int count = 0, i;
+	bool found;
 	for(Liaison l : chemin){
-		for(Carte c : jeu.cartes_visibles){
-			if(c.couleur == l.couleur){
+		if(count == 2)
+			continue;		
+		i = 0;
+		found = false;
+		while(i < 5 && !found){
+			if(jeu.cartes_visibles[i].couleur == l.couleur){
 				carte_a_prendre.push_back(i);
 				count++;
+				found = true;
 			}
+			i++;
 		}
-		i++;
 	}
 
 	if(count > 1){
