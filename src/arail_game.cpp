@@ -87,6 +87,8 @@ int choix_utilisateur(int choix, int index, Jeu& jeu, vector<JoueurContainer> li
 			jc.js = joueur;
 
 			liste_des_joueurs.push_back(jc);
+
+			cout << "Joueur Simple ajouté !" << endl;
 			break;
 		}
 		case 2 :{
@@ -104,6 +106,8 @@ int choix_utilisateur(int choix, int index, Jeu& jeu, vector<JoueurContainer> li
 			jc.jo = joueurO;
 
 			liste_des_joueurs.push_back(jc);
+
+			cout << "Joueur organisée ajouté !" << endl;
 			
 			break;
 		}
@@ -133,12 +137,15 @@ int choix_utilisateur(int choix, int index, Jeu& jeu, vector<JoueurContainer> li
 			jc.ju = joueurU;
 
 			liste_des_joueurs.push_back(jc);
+
+			cout << "Joueur utilisateur ajouté !" << endl;
 			
 			break;
 		}
 		case 5 :{
 			if(index > 1){
 				cout << "Lancement de la partie, nombre de joueurs " << index << endl;
+				cout << liste_des_joueurs[0].type << endl;
 				play_game(jeu, liste_des_joueurs);
 			}else{
 				cout << "Nombre de joueurs insuffisant (2 minimum) " << endl;
@@ -158,6 +165,7 @@ int choix_utilisateur(int choix, int index, Jeu& jeu, vector<JoueurContainer> li
 void play_game(Jeu& jeu, vector<JoueurContainer> liste_des_joueurs){
 	for(int i = 0; i < 30; i++){
 		for(JoueurContainer jc: liste_des_joueurs){
+			cout << jc.type << endl;
 			switch(jc.type){
 				case 1:{
 					joueur_simple_tour(jeu, jc.js);
