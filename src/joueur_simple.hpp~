@@ -10,6 +10,7 @@ struct JoueurSimple {
 	int id;
 	vector<Carte> cartes_couleur;
 	vector<Objectif> cartes_objectif;
+	vector<Objectif> objectifs_complete;
 	int score;
 	int mdp;
 };
@@ -33,5 +34,71 @@ void joueur_simple_config_indice(JoueurSimple& joueur, int indice);
 
 //un tour de jeu pour le joueur simple
 void joueur_simple_tour(Jeu& jeu, JoueurSimple& joueur);
+
+
+//Joueur Organise
+struct JoueurOrganise {
+	int id;
+	vector<Carte> cartes_couleur;
+	vector<Objectif> cartes_objectif;
+	vector<Objectif> objectifs_complete;
+	int score;
+	int mdp;
+};
+
+//initialisation
+void joueur_organise_init(JoueurOrganise& joueur);
+
+//suppression
+void joueur_organise_suppr(JoueurOrganise& joueur);
+
+//acces au mot de passe a fournir au jeu. Le mot de passe sert a s'assurer que
+//le joueur ne tente pas de se faire passer pour un autre. Il sera utilise par
+//le joueur pour toutes les actions sur le jeu qui verifient l'identite du
+//joueur.
+int joueur_organise_mdp(JoueurOrganise& joueur);
+
+//prise en compte de l'indice du joueur fourni par le jeu. Le joueur pourra
+//utiliser cet indice pour s'identifier aupres du jeu pour les actions qui le
+//demandent : piocher, defausser, prendre des liaisons, ...
+void joueur_organise_config_indice(JoueurOrganise& joueur, int indice);
+
+//un tour de jeu pour le joueur simple
+void joueur_organise_tour(Jeu& jeu, JoueurOrganise& joueur);
+
+
+
+//Joueur Organise
+struct JoueurOpportuniste {
+	int id;
+	vector<Carte> cartes_couleur;
+	vector<Objectif> cartes_objectif;
+	vector<Objectif> objectifs_complete;
+	int score;
+	int mdp;
+};
+
+//initialisation
+void joueur_opportuniste_init(JoueurOrganise& joueur);
+
+//suppression
+void joueur_opportuniste_suppr(JoueurOrganise& joueur);
+
+//acces au mot de passe a fournir au jeu. Le mot de passe sert a s'assurer que
+//le joueur ne tente pas de se faire passer pour un autre. Il sera utilise par
+//le joueur pour toutes les actions sur le jeu qui verifient l'identite du
+//joueur.
+int joueur_opportuniste_mdp(JoueurOrganise& joueur);
+
+//prise en compte de l'indice du joueur fourni par le jeu. Le joueur pourra
+//utiliser cet indice pour s'identifier aupres du jeu pour les actions qui le
+//demandent : piocher, defausser, prendre des liaisons, ...
+void joueur_opportuniste_config_indice(JoueurOrganise& joueur, int indice);
+
+//un tour de jeu pour le joueur simple
+void joueur_opportuniste_tour(Jeu& jeu, JoueurOrganise& joueur);
+
+
+
 
 #endif

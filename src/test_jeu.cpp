@@ -2,6 +2,8 @@
 #include "jeu_io.hpp"
 #include "joueur_simple.hpp"
 
+
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -30,18 +32,18 @@ int main(int argc, char** argv) {
 	jeu_debut_partie(jeu) ;
 	
 	//joueur simple
-	JoueurSimple joueur;
-	joueur_simple_init(joueur) ;
+	JoueurOrganise joueur;
+	joueur_organise_init(joueur) ;
 
 	
 	//ajout du joueur à la partie
-	int index = jeu_ajout_joueur(jeu, joueur_simple_mdp(joueur)) ;
-	joueur_simple_config_indice(joueur, index) ;
+	int index = jeu_ajout_joueur(jeu, joueur_organise_mdp(joueur)) ;
+	joueur_organise_config_indice(joueur, index) ;
 
 
 	//jeu
 	for(int i = 0; i < 10; ++i) {
-		joueur_simple_tour(jeu, joueur) ;
+		joueur_organise_tour(jeu, joueur) ;
 	}
 
 	//historique
@@ -53,7 +55,7 @@ int main(int argc, char** argv) {
 	score -= joueur.cartes_objectif.size() * 10;
 	cout << "score joueur 1 :" << score << "\n";
 	//menage
-	joueur_simple_suppr(joueur) ;
+	joueur_organise_suppr(joueur) ;
 
 	jeu_suppr(jeu) ;
 
