@@ -90,21 +90,21 @@ int choix_utilisateur(int choix, int index, Jeu& jeu, vector<JoueurContainer> li
 			break;
 		}
 		case 2 :{
-			/*
+			
 			//joueur organisée
 			JoueurOrganise joueurO;
 			joueur_organise_init(joueurO) ;
-	
+
 			//ajout du joueur à la partie
 			index = jeu_ajout_joueur(jeu, joueur_organise_mdp(joueurO));
 			joueur_organise_config_indice(joueurO, index) ;
 
 			JoueurContainer jc; 
 			jc.type = 2;
-			jc.js = joueurO;
+			jc.jo = joueurO;
 
 			liste_des_joueurs.push_back(jc);
-			*/
+			
 			break;
 		}
 		case 3 :{
@@ -116,17 +116,24 @@ int choix_utilisateur(int choix, int index, Jeu& jeu, vector<JoueurContainer> li
 
 			liste_des_joueurs.push_back(jc);
 			*/
+			cout << "Joueur en chantier !" << endl;
 			break;
 		}
 		case 4 :{
 			//Ici Joueur Controlleur
-			/*
+			JoueurUtilisateur joueurU;
+			joueur_utilisateur_init(joueurU) ;
+
+			//ajout du joueur à la partie
+			index = jeu_ajout_joueur(jeu, joueur_utilisateur_mdp(joueurU));
+			joueur_utilisateur_config_indice(joueurU, index) ;
+			
 			JoueurContainer jc; 
 			jc.type = 4;
-			jc.js = joueur;
+			jc.ju = joueur;
 
 			liste_des_joueurs.push_back(jc);
-			*/
+			
 			break;
 		}
 		case 5 :{
@@ -157,12 +164,14 @@ void play_game(Jeu& jeu, vector<JoueurContainer> liste_des_joueurs){
 				}
 				case 2:{
 					//Joueur Organiser
+					joueur_organise_tour(jeu, jc.jo);
 				}
 				case 3:{
 					//Joueur Opportuniste
 				}
 				case 4:{
 					//Joueur utilisateur
+					joueur_utilisateur_tour(jeu, jc.ju);
 				}
 			}
 		}
@@ -170,12 +179,38 @@ void play_game(Jeu& jeu, vector<JoueurContainer> liste_des_joueurs){
 
 	//historique
 	jeu_affiche_historique(jeu) ;
+	
+	int a = 0;
 
-	int score = 0;
-	for(Objectif o : liste_des_joueurs[0].js.objectifs_complete)
-		score += o.points;
-	score -= liste_des_joueurs[0].js.cartes_objectif.size() * 10;
-	cout << "score joueur 1 :" << score << "\n";
+	for(JoueurContainer jct : liste_des_joueurs){
+		int score = 0;
+		switch(jc.type){
+			case 1:{
+				for(Objectif o : liste_des_joueurs[a].js.objectifs_complete)
+					score += o.points;
+				score -= liste_des_joueurs[a].js.cartes_objectif.size() * 10;
+				cout << "score joueur " << jct.js.id << " : " << score <<endl;
+			}
+			case 2:{
+				for(Objectif o : liste_des_joueurs[a].jo.objectifs_complete)
+					score += o.points;
+				score -= liste_des_joueurs[a].jo.cartes_objectif.size() * 10;
+				cout << "score joueur " << jct.jo.id << " : " << score <<endl;
+			}
+			case 3:{
+					//Joueur Opportuniste
+			}
+			case 4:{
+				for(Objectif o : liste_des_joueurs[a].ju.objectifs_complete)
+					score += o.points;
+				score -= liste_des_joueurs[a].ju.cartes_objectif.size() * 10;
+				cout << "score joueur " << jct.ju.id << " : " << score <<endl;
+			}
+		}
+		a++;
+
+	}
+
 
 	//menage
 	jeu_suppr(jeu) ;

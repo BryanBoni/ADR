@@ -8,7 +8,7 @@
 struct JoueurContainer {
 	int type; //definie le type de joueurs stocké.
 	JoueurSimple js;
-	//JoueurOrganise jo = nullptr;
-	//JoueurOpportuniste jp = nullptr;
-	//JoueurUtilisateur ju = nullptr;
+	JoueurOrganise jo;
+	//JoueurOpportuniste jp;
+	JoueurUtilisateur ju;
 };
