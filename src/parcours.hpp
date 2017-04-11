@@ -41,6 +41,6 @@ Cette fonction appel la fonction dijkstra qui lui renvoi une suite de ville qu'e
 utilisera pour choisir les liaisons qui irons dans chemin.
 La fonction retourne la distance du chemin possible de ville_depart a ville_arrivee ou -1 si il n'en existe aucun
 */
-int distance_chemin_a_prendre(int nb_villes, vector<Liaison> routes, int joueur, int ville_depart, int ville_arrivee);
+//int distance_chemin_a_prendre(int nb_villes, vector<Liaison> routes, int joueur, int ville_depart, int ville_arrivee);
 
-int minimiser_cartes(vector<Liaison& chemin, Jeu& jeu, int joueur, int ville_depart, int ville_arrivee, vector<Carte> cartes);
+//int minimiser_cartes(vector<Liaison>& chemin, Jeu& jeu, int joueur, int ville_depart, int ville_arrivee, vector<Carte> cartes);

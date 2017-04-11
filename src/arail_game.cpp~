@@ -184,7 +184,7 @@ void play_game(Jeu& jeu, vector<JoueurContainer> liste_des_joueurs){
 
 	for(JoueurContainer jct : liste_des_joueurs){
 		int score = 0;
-		switch(jct.type){
+		switch(jc.type){
 			case 1:{
 				for(Objectif o : liste_des_joueurs[a].js.objectifs_complete)
 					score += o.points;

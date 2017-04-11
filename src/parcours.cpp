@@ -146,10 +146,10 @@ int distance_chemin_a_prendre(int nb_villes, vector<Liaison> routes, int joueur,
 
 }
 
-
+/*
 int dijkstra_carte(vector<Liaison>&  liaisons, vector<int>& villes, int joueur, vector<Carte> cartes, int nb_cartes)
 {
-/*
+
     Heap hp;
     vector<int> dist = villes;
     vector<bool> mark ;
@@ -198,11 +198,11 @@ int dijkstra_carte(vector<Liaison>&  liaisons, vector<int>& villes, int joueur, 
             }
         }
     }
-    cout << endl;	*/
+    cout << endl;	
 }
 
 int minimiser_cartes(vector<Liaison& chemin, Jeu& jeu, int joueur, int ville_depart, int ville_arrivee, vector<Carte> cartes)
 {
 
 
-}
+}*/

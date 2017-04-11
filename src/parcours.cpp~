@@ -149,6 +149,7 @@ int distance_chemin_a_prendre(int nb_villes, vector<Liaison> routes, int joueur,
 
 int dijkstra_carte(vector<Liaison>&  liaisons, vector<int>& villes, int joueur, vector<Carte> cartes, int nb_cartes)
 {
+/*
     Heap hp;
     vector<int> dist = villes;
     vector<bool> mark ;
@@ -182,6 +183,11 @@ int dijkstra_carte(vector<Liaison>&  liaisons, vector<int>& villes, int joueur, 
                 if((l.longueur != 0) && (l.proprietaire == 0 || l.proprietaire == joueur))
                     if(l.ville1 == vmin.index)
 		    {
+			vector<int> diff = vector();
+			for(int i : cartes_chemin)
+			{
+				
+			}
                         if(dist[l.ville2] > dist[vmin.index] + l.longueur || dist[l.ville2] < 0)
                         {
                             dist[l.ville2] = dist[vmin.index] + l.longueur;
@@ -192,7 +198,7 @@ int dijkstra_carte(vector<Liaison>&  liaisons, vector<int>& villes, int joueur, 
             }
         }
     }
-    cout << endl;	
+    cout << endl;	*/
 }
 
 int minimiser_cartes(vector<Liaison& chemin, Jeu& jeu, int joueur, int ville_depart, int ville_arrivee, vector<Carte> cartes)
