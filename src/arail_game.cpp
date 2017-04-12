@@ -11,8 +11,8 @@
 using namespace std;
 
 //Prototypes
-int choix_utilisateur(int choix, int index, Jeu& jeu, vector<JoueurContainer> liste_des_joueurs);
-void play_game(Jeu& jeu, vector<JoueurContainer> liste_des_joueurs);
+int choix_utilisateur(int choix, int index, Jeu& jeu, vector<JoueurContainer>& liste_des_joueurs);
+void play_game(Jeu& jeu, vector<JoueurContainer>& liste_des_joueurs);
 
 //Lancement du jeu.
 int main(int argc, char** argv){
@@ -58,13 +58,15 @@ int main(int argc, char** argv){
 		cin >> choix;
 
 		index = choix_utilisateur(choix, index, jeu, liste_des_joueurs);
+
+		cout << liste_des_joueurs.size() << endl;
 	}
 	
 	return EXIT_SUCCESS;
 }
 
 /*Choix d'un élément de la composition des joueurs du jeu*/
-int choix_utilisateur(int choix, int index, Jeu& jeu, vector<JoueurContainer> liste_des_joueurs){
+int choix_utilisateur(int choix, int index, Jeu& jeu, vector<JoueurContainer>& liste_des_joueurs){
 	cout << "\n" << endl;
 
 	switch(choix){
@@ -145,7 +147,8 @@ int choix_utilisateur(int choix, int index, Jeu& jeu, vector<JoueurContainer> li
 		case 5 :{
 			if(index > 1){
 				cout << "Lancement de la partie, nombre de joueurs " << index << endl;
-				cout << liste_des_joueurs[0].type << endl;
+				//cout << liste_des_joueurs[0].type << endl;
+				//cout << "bite" << endl;
 				play_game(jeu, liste_des_joueurs);
 			}else{
 				cout << "Nombre de joueurs insuffisant (2 minimum) " << endl;
@@ -162,24 +165,35 @@ int choix_utilisateur(int choix, int index, Jeu& jeu, vector<JoueurContainer> li
 	return index;
 }
 
-void play_game(Jeu& jeu, vector<JoueurContainer> liste_des_joueurs){
+void play_game(Jeu& jeu, vector<JoueurContainer>& liste_des_joueurs){
+	//cout << "bite" << endl;
 	for(int i = 0; i < 30; i++){
+		//cout << "bite2" << endl;
 		for(JoueurContainer jc: liste_des_joueurs){
+			//cout << "bite3" << endl;
 			cout << jc.type << endl;
 			switch(jc.type){
 				case 1:{
 					joueur_simple_tour(jeu, jc.js);
+					break;
 				}
 				case 2:{
 					//Joueur Organiser
 					joueur_organise_tour(jeu, jc.jo);
+					break;
 				}
 				case 3:{
 					//Joueur Opportuniste
+					break;
 				}
 				case 4:{
 					//Joueur utilisateur
 					joueur_utilisateur_tour(jeu, jc.ju);
+					break;
+				}
+				default:{
+					cout << "Zut ça marche pas" << endl;
+					break;
 				}
 			}
 		}
